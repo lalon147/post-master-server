@@ -1,6 +1,6 @@
 const express = require('express');
 const cors=require('cors');
-const { sellersCollection } = require('./database_config/database_config');
+const jwtRoute = require('./Routes/jwtRoute')
 const app=express()
 require("dotenv").config();
 app.use(cors())
@@ -11,13 +11,7 @@ const port =  process.env.PORT || 5000
 
 
 
-app.get('/', async (req,res) => {
-    const sellers=await sellersCollection.find({}).toArray()
-    res.send(sellers);
-})
-
-
-
+app.use("/jwt",jwtRoute)
 
 
 app.listen(port, ()=>{
