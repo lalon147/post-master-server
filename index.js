@@ -3,6 +3,7 @@ const cors=require('cors');
 const jwtRoute = require('./Routes/jwtRoute');
 const sellersRoute = require('./Routes/sellers.route')
 const deliveryManRoute=require("./Routes/delivery-man")
+const adminRoute=require("./Routes/admin")
 const app=express()
 require("dotenv").config();
 app.use(cors())
@@ -18,6 +19,7 @@ app.get("/",(req,res)=>{
 app.use("/jwt",jwtRoute);
 app.use('/api/v1/sellers',sellersRoute)
 app.use("/api/v1/delivery-man",deliveryManRoute)
+app.use("/api/v1/admin",adminRoute)
 
 
 app.listen(port, ()=>{
