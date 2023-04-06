@@ -6,8 +6,8 @@ require("dotenv").config();
  console.log(uri)
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-const sellersCollection = client.db("post-master").collection("sellers");
-const deliveryManCollection=client.db("post-master").collection("deliveryMan")
+ const usersCollection=client.db("post-master").collection('users');
+ const postCollection=client.db("post-master").collection('posts');
  
 
 
@@ -16,7 +16,7 @@ const deliveryManCollection=client.db("post-master").collection("deliveryMan")
 
 
 module.exports={
-    sellersCollection,deliveryManCollection
+    usersCollection,postCollection
 }
 
 
