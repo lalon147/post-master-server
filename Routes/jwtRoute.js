@@ -1,15 +1,16 @@
 const express = require('express');
 const jwt=require("jsonwebtoken");
-const Router=express.Router();
+const router=express.Router();
 require("dotenv").config()
 
 
 
-Router.get("/",async(req,res)=>{
-    const email=req.query.email;
-    
-    if(email){
-        const token =jwt.sign({email},process.env.ACCESS_TOKEN,{expiresIn:"1h"})
+router.get("/",async(req,res)=>{
+    const email=req.query.email 
+    const role=req.query.role
+    const payload={email,role}  
+    if(email && role){
+        const token =jwt.sign(payload,process.env.ACCESS_TOKEN,{expiresIn:"1h"})
         return res.send({token:token})            
     }
     res.status(403).send({message:"UNAUTHORIZED"})
@@ -17,4 +18,4 @@ Router.get("/",async(req,res)=>{
 
 
 
-module.exports=Router
+module.exports=router

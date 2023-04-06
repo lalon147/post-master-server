@@ -1,4 +1,5 @@
 const jwt=require("jsonwebtoken");
+require("dotenv").config();
 
 
 
@@ -14,6 +15,8 @@ const verifyJwt=(req,res,next)=>{
           return res.status(403).send({message:"Forbidden"})
        }
        req.decoded=decoded
+       
+
        next();
     })
    
