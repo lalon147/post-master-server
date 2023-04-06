@@ -8,6 +8,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
  const usersCollection=client.db("post-master").collection('users');
  const postCollection=client.db("post-master").collection('posts');
+ const productCollection=client.db("post-master").collection("products")
  
 
 
@@ -16,7 +17,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 
 module.exports={
-    usersCollection,postCollection
+    usersCollection,postCollection,productCollection
 }
 
 
