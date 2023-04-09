@@ -1,15 +1,15 @@
-const {productCollection}=require("../database_config/database_config")
+const {postCollection}=require("../database_config/database_config")
 
 const getAllProducts=async(req,res)=>{
-    const result=await productCollection.find({}).toArray()
+    const result=await postCollection.find({}).toArray()
     return res.send(result)
 }
 
-const addProduct=async(req,res)=>{
-    const result=await productCollection.insertOne(req.body)
+const addPost=async(req,res)=>{
+    const result=await postCollection.insertOne(req.body)
     return res.send(result)
 }
 
 module.exports={
-    getAllProducts,addProduct
+    getAllProducts,addPost
 }

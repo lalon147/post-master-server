@@ -3,6 +3,7 @@ const cors=require('cors');
 const jwtRoute = require('./Routes/jwtRoute');
 const adminRoute= require('./Routes/AdminRoute')
 const SellerRoute=require("./Routes/SellerRoute");
+const createUserRoute=require("./Routes/CreateUserRoute")
 const { verifyJwt } = require('./Authorization/jwt');
 const app=express()
 require("dotenv").config();
@@ -19,9 +20,11 @@ app.get("/",(req,res)=>{
 })
 
 
+
 app.use("/api/v1/admin",adminRoute)
 app.use("/api/v1/seller",SellerRoute)
 app.use("/api/v1/jwt",jwtRoute)
+app.use("/api/v1/register",createUserRoute)
 
 app.get("/hello",verifyJwt,(req,res)=>{
    res.send("Double Success")
